@@ -8,7 +8,7 @@ import { useAtom } from "jotai";
 import { currentUserAtom } from "@/features/user/atoms/current-user-atom";
 import api from "@/lib/api-client";
 
-const CODE_PATTERN = /^[A-Za-z0-9._~+-]+$/;
+const CODE_PATTERN = /^[A-Za-z0-9._~+/=-]+$/;
 const STATE_PATTERN = /^[A-Za-z0-9._~-]+$/;
 
 export default function OidcCallbackPage() {
