@@ -2,7 +2,7 @@
 
 # Variables
 REGISTRY ?= registry.gitlab.com
-PROJECT_PATH ?= codemiproject/codemi-internal-tools/forkmost
+PROJECT_PATH ?= bauhouseconsortium/forkmost
 TAG ?= latest
 VERSION := $(shell node -p "require('./package.json').version")
 PLATFORM ?= linux/amd64

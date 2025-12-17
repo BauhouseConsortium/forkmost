@@ -4,11 +4,11 @@
   "version": "0.24.1",
   "private": true,
   "branding": {
-    "appName": "CodemiDev",
+    "appName": "Bauhouse",
     "description": "open-source collaborative wiki and documentation",
-    "githubOrg": "codemiproject",
+    "githubOrg": "BauhouseConsortium",
     "githubRepo": "forkmost",
-    "poweredByText": "Powered by CodemiDev"
+    "poweredByText": "Powered by Bauhouse"
   },
   "scripts": {
     "prebuild": "node scripts/brand-replace.js",

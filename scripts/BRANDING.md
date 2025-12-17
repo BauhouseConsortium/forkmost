@@ -18,11 +18,11 @@ Edit the `branding` section in `package.json`:
 ```json
 {
   "branding": {
-    "appName": "CodemiDev",
+    "appName": "Bauhouse",
     "description": "open-source collaborative wiki and documentation",
-    "githubOrg": "codemiproject",
+    "githubOrg": "BauhouseConsortium",
     "githubRepo": "forkmost",
-    "poweredByText": "Powered by CodemiDev"
+    "poweredByText": "Powered by Bauhouse"
   }
 }
 ```
@@ -49,12 +49,12 @@ Update the `.env.example` files for runtime configuration:
 
 **apps/client/.env.example:**
 ```env
-VITE_APP_NAME=CodemiDev
+VITE_APP_NAME=Bauhouse
 ```
 
 **Root .env.example:**
 ```env
-MAIL_FROM_NAME=CodemiDev
+MAIL_FROM_NAME=Bauhouse
 ```
 
 ## Usage

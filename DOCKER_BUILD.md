@@ -39,10 +39,10 @@ make build-multiplatform
 
 ```bash
 # Build for Linux AMD64
-docker buildx build --platform linux/amd64 -t registry.gitlab.com/codemiproject/codemi-internal-tools/forkmost:latest --load .
+docker buildx build --platform linux/amd64 -t ghcr.io/bauhouseconsortium/forkmost:latest --load .
 
 # Build and push multi-platform
-docker buildx build --platform linux/amd64,linux/arm64 -t registry.gitlab.com/codemiproject/codemi-internal-tools/forkmost:latest --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t ghcr.io/bauhouseconsortium/forkmost:latest --push .
 ```
 
 ## Makefile Targets
