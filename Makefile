@@ -5,6 +5,7 @@ REGISTRY ?= registry.gitlab.com
 PROJECT_PATH ?= codemiproject/codemi-internal-tools/forkmost
 TAG ?= latest
 VERSION := $(shell node -p "require('./package.json').version")
+PLATFORM ?= linux/amd64
 
 # Full image reference
 IMAGE := $(REGISTRY)/$(PROJECT_PATH)
@@ -17,9 +18,9 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: build
-build: ## Build the Docker image
-	@echo "Building Docker image: $(IMAGE):$(TAG)"
-	docker build -t $(IMAGE):$(TAG) .
+build: ## Build the Docker image for Linux AMD64
+	@echo "Building Docker image: $(IMAGE):$(TAG) for $(PLATFORM)"
+	docker buildx build --platform $(PLATFORM) -t $(IMAGE):$(TAG) --load .
 
 .PHONY: push
 push: ## Push the Docker image to GitLab registry
@@ -47,6 +48,13 @@ push-version: tag-version ## Push version-tagged image to registry
 .PHONY: build-push-all
 build-push-all: build push push-version ## Build and push both latest and version-tagged images
 
+.PHONY: build-multiplatform
+build-multiplatform: ## Build and push multi-platform image (AMD64 + ARM64)
+	@echo "Building multi-platform Docker image: $(IMAGE):$(TAG)"
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(IMAGE):$(TAG) --push .
+	@echo "Building multi-platform version tag: $(IMAGE):$(VERSION)"
+	docker buildx build --platform linux/amd64,linux/arm64 -t $(IMAGE):$(VERSION) --push .
+
 .PHONY: clean
 clean: ## Remove local Docker images
 	@echo "Removing local images"
@@ -60,3 +68,4 @@ info: ## Display build information
 	@echo "Full Image:    $(IMAGE)"
 	@echo "Tag:           $(TAG)"
 	@echo "Version:       $(VERSION)"
+	@echo "Platform:      $(PLATFORM)"

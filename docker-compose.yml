@@ -1,6 +1,7 @@
 services:
   forkmost:
     image: ghcr.io/vito0912/forkmost:latest
+    platform: linux/amd64
     depends_on:
       - db
       - redis
